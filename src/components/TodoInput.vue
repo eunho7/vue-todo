@@ -17,9 +17,13 @@ export default {
     },
     methods: {
         addTodo: function() {
-            // 저장하는 로직
-            localStorage.setItem(this.newTodoItem, this.newTodoItem);
-            this.clearInput();
+            if(this.newTodoItem !== '') {
+                var obj = {completed: false, item: this.newTodoItem}
+                // 저장하는 로직
+                // localStorage.setItem(this.newTodoItem, obj);
+                localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+                this.clearInput();
+            }
         },
         clearInput() {
             // 비우는 로직
